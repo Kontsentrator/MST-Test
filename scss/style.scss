@@ -20,7 +20,7 @@ button {
 }
 
 .container {
-    max-width: 1850px;
+    max-width: 1872px;
     margin: 0 auto;
 }
 
@@ -143,13 +143,26 @@ button {
 .content {
     background-color: $background-alt;
     color: $base;
+    width: 100%;
+    padding: 20px;
+
+    &-wrapper {
+        max-width: 435px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
 
     &__title {
         @extend %title;
+        margin-bottom: 50px
     }
 
     &__text {
         @extend %text;
+        margin-bottom: 150px;
     }
 
     &__link-detail {
@@ -160,5 +173,31 @@ button {
         background-color: $base;
         color: $background;
         vertical-align: middle;
+    }
+
+    &-navigation {
+        display: flex;
+        font-family: Gilroy;
+        font-weight: 300;
+        font-size: 17px;
+        line-height: 20px;
+        text-align: center;
+        color: $text-disable;
+        margin-bottom: 140px;
+    }
+}
+
+.footer {
+    margin-left: 23px;
+    margin-top: 23px;
+
+    &__text {
+        font-family: Gilroy;
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0.175729px;
+        text-transform: uppercase;
+        color: $text-disable;
     }
 }
