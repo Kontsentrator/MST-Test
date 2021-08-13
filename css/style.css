@@ -76,7 +76,7 @@ button {
       margin-right: 0; }
   .header-nav__item {
     display: inline-block;
-    margin-right: 56px; }
+    margin-right: 55px; }
 
 .logo {
   display: flex;
@@ -87,19 +87,22 @@ button {
     background-color: #262525;
     margin-right: 23px; }
   .logo__title {
-    color: #262525; }
+    color: #262525;
+    margin-top: -3px; }
 
 .info {
   display: inherit;
   align-items: inherit; }
   .info__phone {
-    margin-right: 27px; }
+    margin-right: 27px;
+    margin-top: -3px; }
 
 .burger-button {
   width: 70px;
   min-width: 70px;
   height: 70px;
   background-color: #262525;
+  padding: 0;
   border: none; }
 
 .page {
@@ -110,25 +113,26 @@ button {
 .aside {
   display: flex;
   align-items: center;
-  width: 300px; }
+  min-width: 284px; }
   .aside-nav__list {
     padding: 0;
     margin: 0; }
     .aside-nav__list :last-child {
       margin-bottom: 0; }
   .aside-nav__item {
-    margin-bottom: 32px; }
+    margin-bottom: 29px; }
   .aside-nav__link {
     color: #505050; }
     .aside-nav__link_active {
       color: #262525; }
 
 .main {
-  width: 100%;
-  display: flex; }
+  height: 840px;
+  display: flex;
+  width: 100%; }
   .main__img {
-    width: 100%;
-    min-height: 500px;
+    height: 100%;
+    max-width: 100%;
     object-fit: cover; }
     .main__img-wrapper {
       max-width: 758px;
@@ -137,19 +141,20 @@ button {
 .content {
   background-color: #F0F0F0;
   color: #262525;
-  width: 100%;
-  padding: 20px; }
+  max-width: 758px;
+  width: 100%; }
   .content-wrapper {
     max-width: 435px;
+    padding-right: 20px;
     height: 100%;
-    margin: 0 auto;
+    margin-left: 172px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end; }
   .content__title {
-    margin-bottom: 50px; }
+    margin-bottom: 40px; }
   .content__text {
-    margin-bottom: 150px; }
+    margin-bottom: 151px; }
   .content__link-detail {
     width: 28px;
     height: 28px;
@@ -166,7 +171,11 @@ button {
     line-height: 20px;
     text-align: center;
     color: #505050;
-    margin-bottom: 140px; }
+    margin-bottom: 159px; }
+    .content-navigation div {
+      margin-right: 4px; }
+    .content-navigation :last-child {
+      margin-right: 0; }
 
 .footer {
   margin-left: 23px;
