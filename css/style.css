@@ -59,7 +59,7 @@ button {
   cursor: pointer; }
 
 .container {
-  max-width: 1850px;
+  max-width: 1872px;
   margin: 0 auto; }
 
 .header {
@@ -136,7 +136,20 @@ button {
 
 .content {
   background-color: #F0F0F0;
-  color: #262525; }
+  color: #262525;
+  width: 100%;
+  padding: 20px; }
+  .content-wrapper {
+    max-width: 435px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; }
+  .content__title {
+    margin-bottom: 50px; }
+  .content__text {
+    margin-bottom: 150px; }
   .content__link-detail {
     width: 28px;
     height: 28px;
@@ -145,5 +158,26 @@ button {
     background-color: #262525;
     color: #FFFFFF;
     vertical-align: middle; }
+  .content-navigation {
+    display: flex;
+    font-family: Gilroy;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: center;
+    color: #505050;
+    margin-bottom: 140px; }
+
+.footer {
+  margin-left: 23px;
+  margin-top: 23px; }
+  .footer__text {
+    font-family: Gilroy;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.175729px;
+    text-transform: uppercase;
+    color: #505050; }
 
 /*# sourceMappingURL=style.css.map */
