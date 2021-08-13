@@ -25,10 +25,12 @@ button {
 }
 
 .header {
+    position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     padding-top: 25px;
+    z-index: 3;
 
     &-nav {
         &__list {
@@ -87,18 +89,19 @@ button {
 
 .page {
     display: flex;
+    justify-content: space-between;
+    margin: -35px 35px 0 35px
 }
 
 .aside {
     display: flex;
     align-items: center;
+    width: 300px;
 
     &-nav {
         &__list {
             padding: 0;
             margin: 0;
-            margin-left: 20px;
-            margin-right: 150px;
 
             :last-child {
                 margin-bottom: 0;
@@ -124,15 +127,20 @@ button {
 .main {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
 
     &__img {
-        max-width: 758px;
+        width: 100%;
+        min-height: 500px;
+        object-fit: cover;
+
+        &-wrapper {
+            max-width: 758px;
+            width: 100%;
+        }
     }
 }
 
 .content {
-    width: 100%;
     background-color: $background-alt;
     color: $base;
 
@@ -148,7 +156,9 @@ button {
         width: 28px;
         height: 28px;
         display: inline-block;
+        text-align: center;
         background-color: $base;
         color: $background;
+        vertical-align: middle;
     }
 }
