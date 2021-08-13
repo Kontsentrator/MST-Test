@@ -1,0 +1,57 @@
+$base: #262525;
+$background-alt: #F0F0F0;
+$background: #FFFFFF;
+$accent: #D88F5E;
+$background-accent: #EBD8CC;
+$text-disable: #505050;
+
+%title {
+    font-family: Gilroy;
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 53px;
+    letter-spacing: -0.0255199px;
+    text-transform: uppercase;
+}
+
+%text {
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: -0.0220791px;
+}
+
+%header-menu {
+    font-family: Gilroy;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+%section-menu {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.567739px;
+}
+
+%section-menu-active {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.567739px;
+    text-transform: uppercase;
+}
+
+%special {
+    font-family: Gilroy;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 21px;
+    letter-spacing: 0.290629px;
+    text-transform: uppercase;
+}
