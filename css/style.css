@@ -86,6 +86,11 @@ button {
   .header-nav__item {
     display: inline-block;
     margin-right: 55px; }
+  .header-nav__line {
+    height: 4px;
+    width: 0;
+    background-color: #D88F5E;
+    transition: width 0.5s; }
 
 .logo {
   display: flex;
@@ -129,11 +134,27 @@ button {
     .aside-nav__list :last-child {
       margin-bottom: 0; }
   .aside-nav__item {
-    margin-bottom: 29px; }
+    margin-bottom: 21px; }
   .aside-nav__link {
-    color: #505050; }
+    transition-duration: .4s;
+    color: #505050;
+    display: inline-block; }
+    .aside-nav__link:after {
+      position: relative;
+      display: block;
+      top: -7px;
+      content: "";
+      height: 9px;
+      width: 0;
+      background-color: #EBD8CC;
+      transition: width 0.2s ease-in-out;
+      z-index: -1; }
+    .aside-nav__link:hover::after {
+      width: 100%; }
     .aside-nav__link_active {
       color: #262525; }
+      .aside-nav__link_active:after {
+        width: 100%; }
 
 .main {
   height: 840px;
@@ -156,15 +177,22 @@ button {
 .content {
   background-color: #F0F0F0;
   color: #262525;
-  width: 50%; }
+  width: 50%;
+  min-width: 600px; }
   .content-wrapper {
     max-width: 435px;
     margin-left: 170px;
+    margin-right: 100px;
     height: 100%;
     position: relative; }
   .content__item {
     position: absolute;
-    bottom: 151px; }
+    bottom: 0;
+    opacity: 0%;
+    transition-duration: .4s; }
+    .content__item_active {
+      opacity: 100%;
+      bottom: 151px; }
   .content__title {
     margin-bottom: 40px; }
   .content__text {
