@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Первомайская</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script defer src="js/jquery-3.6.0.slim.min.js"></script>
+    <script defer type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
     <div class="container">
@@ -65,13 +67,21 @@
                     </div>
                 </div>
 
-                <div class="main__img-wrapper">
-                    <img src="./img/img-05.png" class="main__img"></div>
+                <div class="slider">
+                    <img src="./img/img-01.png" class="slider__img slider__img_active" />
+                    <img src="./img/img-02.png" class="slider__img" />
+                    <img src="./img/img-03.png" class="slider__img" />
+                    <img src="./img/img-04.png" class="slider__img" />
+                    <img src="./img/img-05.png" class="slider__img" />
+                    <img src="./img/img-06.png" class="slider__img" />
                 </div>
             </div>
+        </div>
 
         <footer class="footer">
-            <div class="footer__text">Разработано в MST | 2018</div>
+            <div class="footer__text">Разработано в MST</div>
+            <div class="footer__dash">|</div>
+            <div class="footer__year">2018</div>
         </footer>
     </div>
 </body>
