@@ -141,33 +141,34 @@ button {
   width: 100%; }
 
 .slider {
-  max-width: 758px;
-  width: 100%; }
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse; }
   .slider__img {
+    width: 100%;
     height: 0;
-    max-width: 100%;
     object-fit: cover;
-    transition: duration .2s; }
+    transition-duration: .4s; }
     .slider__img_active {
       height: 100%; }
 
 .content {
   background-color: #F0F0F0;
   color: #262525;
-  max-width: 758px;
-  width: 100%; }
+  width: 50%; }
   .content-wrapper {
     max-width: 435px;
-    padding-right: 20px;
+    margin-left: 170px;
     height: 100%;
-    margin-left: 172px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; }
+    position: relative; }
+  .content__item {
+    position: absolute;
+    bottom: 151px; }
   .content__title {
     margin-bottom: 40px; }
   .content__text {
-    margin-bottom: 151px; }
+    margin-bottom: 178px; }
   .content__link-detail {
     width: 28px;
     height: 28px;
@@ -177,6 +178,8 @@ button {
     color: #FFFFFF;
     vertical-align: middle; }
   .content-navigation {
+    position: absolute;
+    bottom: 0;
     display: flex;
     font-family: Gilroy-Light;
     font-weight: 300;
