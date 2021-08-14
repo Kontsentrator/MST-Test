@@ -50,6 +50,13 @@ button {
         &__link {
             @extend %header-menu;
         }
+
+        &__line {
+            height: 4px;
+            width: 0;
+            background-color: $accent;
+            transition: width 0.5s;
+        }
     }
 }
 
@@ -113,16 +120,38 @@ button {
         }
 
         &__item {
-            margin-bottom: 29px;
+            margin-bottom: 21px;
         }
 
         &__link {
+            transition-duration: .4s;
             @extend %section-menu;
             color: $text-disable;
+            display: inline-block;
+
+            &:after {
+                position: relative;
+                display: block;
+                top: -7px;
+                content: "";
+                height: 9px;
+                width: 0;
+                background-color: $background-accent;
+                transition: width 0.2s ease-in-out;
+                z-index: -1;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
 
             &_active {
                 @extend %section-menu-active;
                 color: $base;
+                
+                &:after {
+                    width: 100%;
+                }
             }
         }
     }
@@ -156,17 +185,26 @@ button {
     background-color: $background-alt;
     color: $base;
     width: 50%;
+    min-width: 600px;
 
     &-wrapper {
         max-width: 435px;
         margin-left: 170px;
+        margin-right: 100px;
         height: 100%;    
         position: relative;
     }
 
     &__item {
         position: absolute;
-        bottom: 151px;
+        bottom: 0;
+        opacity: 0%;
+        transition-duration: .4s;
+
+        &_active {
+            opacity: 100%;
+            bottom: 151px;
+        }
     }
 
     &__title {
