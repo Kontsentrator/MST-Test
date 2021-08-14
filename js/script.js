@@ -5,23 +5,38 @@ $(document).ready(function() {
     header_nav_line.css("width", header_link_active.innerWidth());
 
     $(".header-nav__item").hover(function() {
-        var id = $(this).index();
-        var width = calc_width(0, id, header_link_list);
+        var id_from = header_link_list.find(".header-nav__link_active").parent().index();
+        var id_where = $(this).index();
+        var translateX = 0;
+
+        if(id_from > id_where) {
+            translateX = calcTranslateX(id_from, id_where, header_link_list);
+            [id_from, id_where] = [id_where, id_from];
+        }
+
+        var width = calcWidth(id_from, id_where, header_link_list);
         
+        header_nav_line.css("transform", "translateX(" + translateX + "px)");
         header_nav_line.css("width", width);
     }, function() {
         header_nav_line.css("width", header_link_active.innerWidth());
+
+        id_from = $(this).index();
+        id_where = header_link_list.find(".header-nav__link_active").parent().index();
+        translateX = calcTranslateX(id_from, id_where, header_link_list);
+        header_nav_line.css("transform", "translateX(" + translateX + "px)");
     });
 
     $(".header-nav__item").click( function() {
+        var id_from = header_link_list.find(".header-nav__link_active").parent().index();
         header_link_active.removeClass("header-nav__link_active");
         $(this).children().addClass("header-nav__link_active");
         header_link_active = $(".header-nav__link_active");
-        var id = $(this).index();
+        var id_where = $(this).index();
 
-        header_nav_line.css("transform", "translateX(" + header_link_active.outerWidth(true) + "px)");
-
-        page_num.text(id + 1);
+        translateX = calcTranslateX(id_from, id_where, header_link_list);
+        header_nav_line.css("width", header_link_active.innerWidth());
+        header_nav_line.css("transform", "translateX(" + translateX + "px)");
     });
 
     var slider_img_list = $(".slider__img"); // Массив картинок для разделов (Архитектура, Безопасность, ...)
@@ -56,16 +71,26 @@ $(document).ready(function() {
     });
 });
 
-function calc_width(id_from, id_where, object) {
-    for(i = 0; i <= id_where; i++) {
-        innerWidth = object.eq(i).innerWidth();
-        outerWidth = 0;
+function calcTranslateX(id_from, id_where, object) {
+    translateX = calcWidth(id_from, id_where, object, true)
+    return translateX;
+}
 
-        for(j = i; j > 0; j--) {
-            outerWidth += object.eq(j - 1).outerWidth(true);
-        }
-        width = innerWidth + outerWidth;
+function calcWidth(id_from, id_where, object, only_outer = false) {
+
+    // Считаем внутреннюю длину элемента, к которому стремится линия
+    var inner_width = 0;
+    if(!only_outer) {
+        inner_width = object.eq(id_where).innerWidth();
     }
 
+    // Считаем внешнюю длину элементов на пути линии (margin и т.д.)
+    var outer_width = 0;
+    for(i = id_where - 1; i >= id_from; i--) {
+        outer_width += object.eq(i).outerWidth(true);
+    }
+
+    // Складываем внешние длины элементов с внутренней длиной элемента
+    width = outer_width + inner_width;
     return width;
 }
