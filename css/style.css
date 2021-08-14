@@ -1,3 +1,12 @@
+@font-face {
+  font-family: Gilroy;
+  src: url("../fonts/Gilroy-ExtraBold.woff2"); }
+@font-face {
+  font-family: Gilroy-Light;
+  src: url("../fonts/Gilroy-Light.woff2"); }
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/Roboto-Regular.woff2"); }
 .content__title {
   font-family: Gilroy;
   font-weight: bold;
@@ -130,13 +139,17 @@ button {
   height: 840px;
   display: flex;
   width: 100%; }
-  .main__img {
-    height: 100%;
+
+.slider {
+  max-width: 758px;
+  width: 100%; }
+  .slider__img {
+    height: 0;
     max-width: 100%;
-    object-fit: cover; }
-    .main__img-wrapper {
-      max-width: 758px;
-      width: 100%; }
+    object-fit: cover;
+    transition: duration .2s; }
+    .slider__img_active {
+      height: 100%; }
 
 .content {
   background-color: #F0F0F0;
@@ -165,7 +178,7 @@ button {
     vertical-align: middle; }
   .content-navigation {
     display: flex;
-    font-family: Gilroy;
+    font-family: Gilroy-Light;
     font-weight: 300;
     font-size: 17px;
     line-height: 20px;
@@ -178,15 +191,17 @@ button {
       margin-right: 0; }
 
 .footer {
-  margin-left: 23px;
-  margin-top: 23px; }
-  .footer__text {
-    font-family: Gilroy;
-    font-weight: 300;
-    font-size: 13px;
-    line-height: 16px;
-    letter-spacing: 0.175729px;
-    text-transform: uppercase;
-    color: #505050; }
+  margin-left: 35px;
+  margin-top: 23px;
+  font-family: Gilroy-Light;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.175729px;
+  text-transform: uppercase;
+  color: #505050;
+  display: flex; }
+  .footer div {
+    margin-right: 22px; }
 
 /*# sourceMappingURL=style.css.map */
