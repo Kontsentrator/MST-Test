@@ -55,7 +55,7 @@ button {
             height: 4px;
             width: 0;
             background-color: $accent;
-            transition: width 0.5s;
+            transition-duration: .5s;
         }
     }
 }
