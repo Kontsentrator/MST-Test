@@ -135,14 +135,16 @@ button {
 }
 
 .slider {
-    max-width: 758px;
-    width: 100%;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
 
     &__img {
+        width: 100%;
         height: 0;
-        max-width: 100%;
         object-fit: cover;
-        transition: duration .2s;
+        transition-duration: .4s;
 
         &_active {
             height: 100%;
@@ -153,17 +155,18 @@ button {
 .content {
     background-color: $background-alt;
     color: $base;
-    max-width: 758px;
-    width: 100%;
+    width: 50%;
 
     &-wrapper {
         max-width: 435px;
-        padding-right: 20px;
-        height: 100%;
-        margin-left: 172px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        margin-left: 170px;
+        height: 100%;    
+        position: relative;
+    }
+
+    &__item {
+        position: absolute;
+        bottom: 151px;
     }
 
     &__title {
@@ -173,7 +176,7 @@ button {
 
     &__text {
         @extend %text;
-        margin-bottom: 151px;
+        margin-bottom: 178px;
     }
 
     &__link-detail {
@@ -187,6 +190,8 @@ button {
     }
 
     &-navigation {
+        position: absolute;
+        bottom: 0;
         display: flex;
         font-family: Gilroy-Light;
         font-weight: 300;
