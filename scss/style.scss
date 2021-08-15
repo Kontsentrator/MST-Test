@@ -101,10 +101,13 @@ button {
     border: none;
 }
 
+.pages__wrapper {
+}
+
 .page {
     display: flex;
     justify-content: space-between;
-    margin: -35px 35px 0 35px
+    margin: -35px 35px 0 35px;
 }
 
 .aside {
