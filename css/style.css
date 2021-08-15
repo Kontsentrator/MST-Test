@@ -78,19 +78,23 @@ button {
   justify-content: space-between;
   padding-top: 25px;
   z-index: 3; }
-  .header-nav__list {
-    padding: 0;
-    margin: 0; }
-    .header-nav__list :last-child {
-      margin-right: 0; }
-  .header-nav__item {
-    display: inline-block;
-    margin-right: 55px; }
-  .header-nav__line {
-    height: 4px;
-    width: 0;
-    background-color: #D88F5E;
-    transition-duration: .5s; }
+  .header-nav {
+    margin-top: -5px; }
+    .header-nav__list {
+      padding: 0;
+      margin: 0; }
+      .header-nav__list :last-child {
+        margin-right: 0; }
+    .header-nav__item {
+      display: inline-block;
+      margin-right: 55px; }
+    .header-nav__line {
+      position: absolute;
+      height: 4px;
+      width: 0;
+      margin-top: 6px;
+      background-color: #D88F5E;
+      transition-duration: .5s; }
 
 .logo {
   display: flex;
@@ -196,7 +200,8 @@ button {
   .content__title {
     margin-bottom: 40px; }
   .content__text {
-    margin-bottom: 178px; }
+    margin-bottom: 178px;
+    max-height: 100px; }
   .content__link-detail {
     width: 28px;
     height: 28px;
@@ -204,7 +209,9 @@ button {
     text-align: center;
     background-color: #262525;
     color: #FFFFFF;
-    vertical-align: middle; }
+    vertical-align: middle;
+    position: relative;
+    z-index: 2; }
   .content-navigation {
     position: absolute;
     bottom: 0;
