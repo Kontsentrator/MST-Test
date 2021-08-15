@@ -89,6 +89,8 @@ $(document).ready(function() {
     var all_pages = $(".content-navigation__all");
     all_pages.text(aside_link_list.length);
 
+    content_text = content_item_active.find(".content__text");
+
     $(".aside-nav__list").on('click', ".aside-nav__item", function() {
         // Устанавливаем активную ссылку раздела
         aside_link_active.removeClass("aside-nav__link_active");
