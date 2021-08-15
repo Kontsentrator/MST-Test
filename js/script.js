@@ -1,68 +1,107 @@
+// Функция для рассчёта перемещения линии по оси X
+function calcTranslateX(id, object) {
+    // Считаем расстояние от первого элемента до текущего
+    translateX = calcWidth(0, id, object, true);
+    return translateX;
+}
+
+// Функция для рассчёта длины линии
+function calcWidth(id_from, id_where, object, only_outer = false) {
+    // Считаем внутреннюю длину элемента, к которому стремится линия
+    var inner_width = 0;
+    if(!only_outer) {
+        inner_width = object.eq(id_where).innerWidth();
+    }
+
+    // Считаем внешнюю длину элементов на пути линии
+    var outer_width = object.eq(id_where).offset().left - object.eq(id_from).offset().left;
+
+    // Складываем внешние длины элементов с внутренней длиной элемента
+    width = outer_width + inner_width;
+    return width;
+}
+
 $(document).ready(function() {
-    var header_link_list = $(".header-nav__item");
-    var header_link_active = $(".header-nav__link_active");
-    var header_nav_line = $(".header-nav__line");
+
+    // ---------------- Работа с линией хэдера ----------------
+
+    var header_link_list = $(".header-nav__item"); // Массив ссылок в хэдере
+    var header_link_active = $(".header-nav__link_active"); // Активная ссылка в хэдере
+    var header_nav_line = $(".header-nav__line"); // Линия
+    var header_nav_line_scale = 1.1; // Множитель длины линии
+
+    // Установка начальных параметров линии
     header_nav_line.css("width", header_link_active.innerWidth());
+    header_nav_line.css("transform", "scaleX("+ header_nav_line_scale +")");
 
     $(".header-nav__item").hover(function() {
-        var id_from = header_link_list.find(".header-nav__link_active").parent().index();
-        var id_where = $(this).index();
-        var translateX = 0;
+        var id_from = header_link_list.find(".header-nav__link_active").parent().index(); // Из активного элемента
+        var id_where = $(this).index(); // В выбранный
 
-        if(id_from > id_where) {
-            translateX = calcTranslateX(id_from, id_where, header_link_list);
-            [id_from, id_where] = [id_where, id_from];
+        if(id_from != id_where) {
+            var translateX = 0;
+            if(id_from > id_where) {
+                translateX = calcTranslateX(id_where, header_link_list);
+                
+                [id_from, id_where] = [id_where, id_from];
+            } else {
+                translateX = calcTranslateX(id_from, header_link_list);
+            }
+            header_nav_line.css("transform", "translateX(" + translateX + "px)");
+            var width = calcWidth(id_from, id_where, header_link_list);
+            header_nav_line.css("width", width);
         }
-
-        var width = calcWidth(id_from, id_where, header_link_list);
-        
-        header_nav_line.css("transform", "translateX(" + translateX + "px)");
-        header_nav_line.css("width", width);
     }, function() {
-        header_nav_line.css("width", header_link_active.innerWidth());
+        var id = header_link_list.find(".header-nav__link_active").parent().index(); // Активный элемент
 
-        id_from = $(this).index();
-        id_where = header_link_list.find(".header-nav__link_active").parent().index();
-        translateX = calcTranslateX(id_from, id_where, header_link_list);
-        header_nav_line.css("transform", "translateX(" + translateX + "px)");
+        translateX = calcTranslateX(id, header_link_list);
+        header_nav_line.css("transform", "translateX(" + translateX + "px) scaleX("+ header_nav_line_scale +")");
+        header_nav_line.css("width", header_link_active.innerWidth());
     });
 
     $(".header-nav__item").click( function() {
-        var id_from = header_link_list.find(".header-nav__link_active").parent().index();
         header_link_active.removeClass("header-nav__link_active");
         $(this).children().addClass("header-nav__link_active");
         header_link_active = $(".header-nav__link_active");
-        var id_where = $(this).index();
 
-        translateX = calcTranslateX(id_from, id_where, header_link_list);
+        var id = $(this).index();
+        translateX = calcTranslateX(id, header_link_list);
         header_nav_line.css("width", header_link_active.innerWidth());
-        header_nav_line.css("transform", "translateX(" + translateX + "px)");
+        header_nav_line.css("transform", "translateX(" + translateX + "px) scaleX("+ header_nav_line_scale +")");
     });
 
-    var slider_img_list = $(".slider__img"); // Массив картинок для разделов (Архитектура, Безопасность, ...)
-    var aside_link_list = $(".aside-nav__link"); // Массив ссылкок на разделы
-    var content_item_list = $(".content__item"); // Массив элементов, содержащих описание разделов
-    
-    var slider_img_active = $(".slider__img_active"); // Активная картинка раздела
+    // ---------------- Работа контентом страницы ----------------
+
+    var aside_link_list = $(".aside-nav__link"); // Массив ссылкок на разделы (Архитектура, Безопасность, ...)
     var aside_link_active = $(".aside-nav__link_active"); // Активная ссылка раздела
+    var aside_link_active_id = aside_link_active.parent().index(); // id активной ссылки
+    
+    var slider_img_list = $(".slider__img"); // Массив картинок для разделов 
+    var slider_img_active = $(".slider__img_active"); // Активная картинка раздела
+    
+    var content_item_list = $(".content__item"); // Массив элементов, содержащих описание разделов
     var content_item_active = $(".content__item_active"); // Активное описание раздела
     
     var page_num = $(".content-navigation__active"); // Номер текущего раздела
-    page_num.text("1");
-
-    var all_pages = $(".content-navigation__all"); // Всего разделов
+    // Устанавливаем текущий номер раздела
+    page_num.text(aside_link_active_id + 1);
+    // Ищем кол-во разделов
+    var all_pages = $(".content-navigation__all");
     all_pages.text(aside_link_list.length);
 
     $(".aside-nav__list").on('click', ".aside-nav__item", function() {
+        // Устанавливаем активную ссылку раздела
         aside_link_active.removeClass("aside-nav__link_active");
         $(this).children().addClass("aside-nav__link_active");
         aside_link_active = $(".aside-nav__link_active");
         var id = $(this).index();
 
+        // Устанавливаем активный контент раздела
         content_item_active.removeClass("content__item_active");
         content_item_list.eq(id).addClass("content__item_active");
         content_item_active = $(".content__item_active");
 
+        // Устанавливаем активную картинку раздела
         slider_img_active.removeClass("slider__img_active");
         slider_img_list.eq(id).addClass("slider__img_active");
         slider_img_active = $(".slider__img_active");
@@ -70,27 +109,3 @@ $(document).ready(function() {
         page_num.text(id + 1);
     });
 });
-
-function calcTranslateX(id_from, id_where, object) {
-    translateX = calcWidth(id_from, id_where, object, true)
-    return translateX;
-}
-
-function calcWidth(id_from, id_where, object, only_outer = false) {
-
-    // Считаем внутреннюю длину элемента, к которому стремится линия
-    var inner_width = 0;
-    if(!only_outer) {
-        inner_width = object.eq(id_where).innerWidth();
-    }
-
-    // Считаем внешнюю длину элементов на пути линии (margin и т.д.)
-    var outer_width = 0;
-    for(i = id_where - 1; i >= id_from; i--) {
-        outer_width += object.eq(i).outerWidth(true);
-    }
-
-    // Складываем внешние длины элементов с внутренней длиной элемента
-    width = outer_width + inner_width;
-    return width;
-}
