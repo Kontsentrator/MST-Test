@@ -123,16 +123,20 @@ button {
   padding: 0;
   border: none; }
 
+.pages__wrapper {
+  margin: -35px 35px 0 35px;
+  width: 100%;
+  position: relative; }
+
 .page {
   display: flex;
   justify-content: space-between;
-  opacity: 0;
   height: 0;
+  opacity: 0;
   transition: opacity .4s; }
   .page_active {
     height: auto;
-    opacity: 100%;
-    margin: -35px 35px 0 35px; }
+    opacity: 100%; }
     .page_active .block {
       display: block;
       height: 840px;
