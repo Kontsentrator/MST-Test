@@ -101,13 +101,25 @@ button {
     border: none;
 }
 
-.pages__wrapper {
-}
-
 .page {
     display: flex;
     justify-content: space-between;
-    margin: -35px 35px 0 35px;
+    opacity: 0;
+    height: 0;
+    transition: opacity .4s;
+
+    &_active {
+        height: auto;
+        opacity: 100%;
+        margin: -35px 35px 0 35px;
+
+        .block {
+            display: block;
+            height: 840px;
+            width: 100%;
+            background-color: $background-alt;
+        }
+    }
 }
 
 .aside {
@@ -215,13 +227,12 @@ button {
 
     &__title {
         @extend %title;
-        margin-bottom: 40px
+        margin-bottom: 40px;
     }
 
     &__text {
         @extend %text;
         margin-bottom: 178px;
-        max-height: 100px;
     }
 
     &__link-detail {
