@@ -101,17 +101,22 @@ button {
     border: none;
 }
 
+.pages__wrapper {
+    margin: -35px 35px 0 35px;
+    width: 100%;
+    position: relative;
+}
+
 .page {
     display: flex;
     justify-content: space-between;
-    opacity: 0;
     height: 0;
+    opacity: 0;
     transition: opacity .4s;
 
     &_active {
         height: auto;
         opacity: 100%;
-        margin: -35px 35px 0 35px;
 
         .block {
             display: block;
