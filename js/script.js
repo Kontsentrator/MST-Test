@@ -21,6 +21,21 @@ function calcWidth(id_from, id_where, object, only_outer = false) {
     return width;
 }
 
+function cutText(object) {
+    line_height = object.css("line-height").replace("px", '');
+    array_text = object.text().split(' ');
+
+    while(object.innerHeight()/line_height >= 4) {
+        array_text.pop();
+        new_text = '';
+        for(i = 0; i < array_text.length; i++) {
+            new_text += array_text[i] + " ";
+        }
+        object.text(new_text);
+        object.append("<a href='#' class='content__link-detail'>...</a>");         
+    }
+}
+
 $(document).ready(function() {
 
     // ---------------- Работа с линией хэдера ----------------
@@ -59,12 +74,20 @@ $(document).ready(function() {
         header_nav_line.css("width", header_link_active.innerWidth());
     });
 
+    var pages_list = $(".page");
+    var page_active = $(".page_active");
+    var page_active_id = pages_list.find(".page_active").index();
+
     $(".header-nav__item").click( function() {
         header_link_active.removeClass("header-nav__link_active");
         $(this).children().addClass("header-nav__link_active");
         header_link_active = $(".header-nav__link_active");
-
         var id = $(this).index();
+
+        page_active.removeClass("page_active");
+        pages_list.eq(id).addClass("page_active");
+        page_active = $(".page_active");
+
         translateX = calcTranslateX(id, header_link_list);
         header_nav_line.css("width", header_link_active.innerWidth());
         header_nav_line.css("transform", "translateX(" + translateX + "px) scaleX("+ header_nav_line_scale +")");
@@ -90,6 +113,7 @@ $(document).ready(function() {
     all_pages.text(aside_link_list.length);
 
     content_text = content_item_active.find(".content__text");
+    cutText(content_text);
 
     $(".aside-nav__list").on('click', ".aside-nav__item", function() {
         // Устанавливаем активную ссылку раздела
@@ -102,6 +126,8 @@ $(document).ready(function() {
         content_item_active.removeClass("content__item_active");
         content_item_list.eq(id).addClass("content__item_active");
         content_item_active = $(".content__item_active");
+        content_text = content_item_active.find(".content__text");
+        cutText(content_text);
 
         // Устанавливаем активную картинку раздела
         slider_img_active.removeClass("slider__img_active");
