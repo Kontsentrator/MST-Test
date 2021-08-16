@@ -124,9 +124,7 @@ button {
   border: none; }
 
 .pages__wrapper {
-  margin: -35px 35px 0 35px;
-  width: 100%;
-  position: relative; }
+  margin: -35px 35px 0 35px; }
 
 .page {
   display: flex;
