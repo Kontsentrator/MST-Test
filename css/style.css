@@ -126,7 +126,18 @@ button {
 .page {
   display: flex;
   justify-content: space-between;
-  margin: -35px 35px 0 35px; }
+  opacity: 0;
+  height: 0;
+  transition: opacity .4s; }
+  .page_active {
+    height: auto;
+    opacity: 100%;
+    margin: -35px 35px 0 35px; }
+    .page_active .block {
+      display: block;
+      height: 840px;
+      width: 100%;
+      background-color: #F0F0F0; }
 
 .aside {
   display: flex;
@@ -200,8 +211,7 @@ button {
   .content__title {
     margin-bottom: 40px; }
   .content__text {
-    margin-bottom: 178px;
-    max-height: 100px; }
+    margin-bottom: 178px; }
   .content__link-detail {
     width: 28px;
     height: 28px;
