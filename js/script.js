@@ -1,5 +1,5 @@
 // Функция для рассчёта перемещения линии по оси X
-function calcTranslateX(id, object) {
+function calcTranslateX(id, object) { // лучше все же современные стандарты разработки использовать, стрелочные функции, let и const и всякое такое. Сборщики за тебя адаптируют под старые браузеры все
     // Считаем расстояние от первого элемента до текущего
     translateX = calcWidth(0, id, object, true);
     return translateX;
@@ -40,6 +40,7 @@ $(document).ready(function() {
 
     // ---------------- Работа с линией хэдера ----------------
 
+    // Вай, jquery, давно его не видел) Посмотри в сторону фреймворков - React или Vue
     var header_link_list = $(".header-nav__item"); // Массив ссылок в хэдере
     var header_link_active = $(".header-nav__link_active"); // Активная ссылка в хэдере
     var header_nav_line = $(".header-nav__line"); // Линия
