@@ -8,7 +8,7 @@
   font-family: Roboto;
   src: url("../fonts/Roboto-Regular.woff2"); }
 .content__title {
-  font-family: Gilroy;
+  font-family: Gilroy; // Лучше к шрифтам указывать значения по уполчанию через запятые. Если у пользователя не сразу шрифт прогрузится, то по умолчанию гротеск шрифт системы покажется. Тут бы антиква везде, т.к. sans-serif указать запасным шрифтом
   font-weight: bold;
   font-size: 44px;
   line-height: 53px;
